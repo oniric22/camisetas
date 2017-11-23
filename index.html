@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+<script src="htpps://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</HEAD>
+<body>
+
+
+<div ng-app="">   //ng-app="" => en este div se ha de ejecutar angular
+ <p>Name:<input type="text" ng-model="name"></p> ng-model=> une el valor del imput con
+                                                 con la variable name
+ <p ng-bind="name"></p>  //ng-bind=> muetra el valor de la variable name 
+ </div>
+ </body>
+ </html>
+ ------------------------------------------------------------------------
+
+ <div ng-app="" ng-init="nombre='DANI'"> //  ng-init="NombVar='dato'"
+                                             inicializa el valor de la
+											 variable:NomVar
+------------------------------------------------------------------------
+
+Poner data-ng-LoQueSea // en vez de ng-LoQueSea para que la página sea
+valida en html
+
+------------------------------------------------------------------------
+
+{{NomDeVariable}} es igual que ng-bind="NomDeVariable"
+
+tambien {{5 + 5 }} o {{valor1+valor2}}  o  {{ nombre+" " + apellido}}
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+A N G U LA R M O D U LE
+
+Un modulo en angular js es una division del codigo de la aplicacion.
+S ejecuta en un determinado HTML
+
+<div ng-app="myApp">
+</div>
+<script>
+var app=angular.module("myApp",[]);
+</script>
+
+En los modulos es donde se ponen los controladores y las directivas que son funciones
+del modulo que los contiene
+
+<DIV ng-app="myApp" ng-controller="controlador_1">
+{{firstName+" "lastName"}}
+</DIV>
+
+<SCRIPT>
+var app=angular.module("myApp",[]);
+ app.controller("controlador_1",function($scope){
+  $scope.firstName="Dani";
+  $scope.lastName="Guido";
+  });
+  
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+Los Modulos y los controladores suelen ir .js
+
+  <DIV ng-app="myApp" ng-controller="controlador_1">
+  
+ {{firstName+" "lastName}}
+ </DIV>
+ 
+ <script src="myApp.js"></script>
+ <script src="controlador_1"></script>
+ 
+ 
+ ------------------------------------------
+ myApp.js
+ ---------------------------------------
+ var app=angular.module("myApp",[]);
+ 
+------------------------------------------
+
+controlador_1.js
+--------------------
+app.controller("controlador_1",function($scope){
+$scope.firstName="Dani";
+$scope.lastName="guido";
+});
+------------------------------------------------------------
+-------------------------------------------------------------
+La libreria de Angular se debe cargar en el <head> o al principiodel body
+poque hasta que no se ha cargado no se puede llamar a los modulos,controladores,etc..
+
+----------------------------------------------------------------------------
+DIRECTIVAS
+
+lAS DIRECTIVAS SON UNA EXTENSION DEL HTML ng-loquesea hace algo
+Son funciones
+-----------------------------------------------------------------------
+ng-repeat
+----------------------------
+ng-repeat repite el elemento (x) del objeto o matriz pasados c
+con el elemento html de la etiqueta
+ej:
+<div ng-app"" ng-init="nombres['dani','guido','anna']">
+<ul>
+<li ng-repeat="x in nombres">
+{{ x}}
+</li>
+</ul>
+</div>
+el resultado es:
+. dani
+.guido
+.anna
+
+-clona el elemento html para cada uno de los items del grupo
+
+<div ng-app="" ng-init="
+ nombresIApellidos=[
+ {nombre:'dani',apellido:'viscasillas'},
+ {nombre:'guido',apellido:'otegui'}]">
+ 
+ <ul>
+  <li ng-repeat="x in nombresIApellidos">
+  {{x.nombre +  "  ,  " + x.apellido}}
+  </li>
+ </ul>
+ </div>
+ el resultado es 
+ daniel   , viscasillas
+ guido    , otegui
+ 
+ ------------------------------------------------------------
+ ng-app :auto-bootstrap la aplicacion ng
+ ----------------------------------------------------------
+ NG-MODEL
+ --------------------
+ ng-model- une los inputs de html (select,textArea,input) con el 
+ nombre de una variable que servira en ng.
+ ej<.
+ <input type="text" ng-model="x">
+ {{x}}
+ ----------------------------------------------------------------------
+ NUEVAS DIRECTIVAS
+ --------------------------------
+ <nueva-directiva>
+ <h1 nueva-directiva>
+ <h1 class="nueva-directiva">
+ 
+ <!--directive: nueva-directiva-->
+ <script>
+ var app=anguar.module("myApp",[]);
+ app.directive("nuevaDirectiva",function(){
+      return {
+	          template:"<h2>Hecho con Angular</h2>"
+		     };
+		 });
+	</script>
+ 
+ ---------------
+ las directivas se pueden restringir para su uso:
+ 
+ 
+ E: element
+ A: attribute
+ C: class
+ M: commnent
+ --------------------------------------------
+ ej:
+ 
+ var app=anguar.module("myApp,[]);
+ app.directive("nuevaDirectiva",function() 
+               return{
+			     restrict:A,
+				 template:"<h2>hecho con Angular</h2>"
+				 };
+			});
+			
+			
+	 
+	
+	  }
+ 
+ 
+
+  
+										 
+  
+ 
+ 
+ 
