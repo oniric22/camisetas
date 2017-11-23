@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+
+</HEAD>
+
+<body>
+<table>
+<tr>
+<th><input type="button" value="+" onclick="msg()"></th>
+<th id="resultado"></th>
+</tr>
+</table>
+<script>
+
+
+function msg(){
+
+ if(!window.localStorage.getItem("camisetas"))
+   {
+        window.localStorage.setItem("camisetas","0");
+        document.getElementById("resultado").innerHTML = "camisetas=0";
+         //location,reload(true);
+   }
+else
+ {
+    var value=window.localStorage.getItem("camisetas");
+    value++;
+    window.localStorage.setItem("camisetas",value);
+     document.getElementById("resultado").innerHTML = window.localStorage.getItem("camisetas");
+     //location.reload(true);
+  }
+}
+
+</script>
+</body>
+</html>
